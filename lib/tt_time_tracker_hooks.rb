@@ -12,9 +12,9 @@ class TimeTrackerHooks < Redmine::Hook::ViewListener
     issue = context[:issue]
     if issue.closed?
       TimeTracker.where(:issue_id => issue.id).all.each do |timer|
-        if timer.activity_id.nil?
-          timer.activity_id = TimeEntryActivity.find_or_create_by_name(:name => :ticket_closed, :active => false).id
-        end
+        #if timer.activity_id.nil?
+        #  timer.activity_id = TimeEntryActivity.find_or_create_by_name(:name => :ticket_closed, :active => false).id
+        #end
         timer.stop
       end
     end
